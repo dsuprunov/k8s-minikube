@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-portal-deployment
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - name: demo-portal
+          env:
+            - name: DEMO_PORTAL_AAA
+              value: "dev-aaa"
+            - name: DEMO_PORTAL_BBB
+              value: "dev-123"
+            - name: DEMO_PORTAL_SECRET_DEV
+              valueFrom:
+                secretKeyRef:
+                  name: demo-portal-secret
+                  key: DEMO_PORTAL_SECRET_DEV
+            - name: DEMO_PORTAL_SECRET_BASE
+              valueFrom:
+                secretKeyRef:
+                  name: demo-portal-secret
+                  key: DEMO_PORTAL_SECRET_BASE

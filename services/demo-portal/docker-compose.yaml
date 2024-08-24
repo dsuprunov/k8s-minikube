@@ -1,0 +1,11 @@
+services:
+  demo-portal:
+    build:
+      context: .
+    ports:
+      - 8080:8080
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DEMO_PORTAL_AAA=aaa
+      - DEMO_PORTAL_BBB=123
+      - DEMO_PORTAL_CCC={"key1":"value1","key2":"value2","key3":{"nestedKey":"nestedValue"}}

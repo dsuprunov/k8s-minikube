@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-portal-deployment
+spec:
+  replicas: 3
+  template:
+    spec:
+      containers:
+        - name: demo-portal
+          env:
+            - name: AAA
+              value: "prod-aaa"
+            - name: BBB
+              value: "prod-123"

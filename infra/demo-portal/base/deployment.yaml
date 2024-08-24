@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-portal-deployment
+  labels:
+    app: demo-portal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-portal
+  template:
+    metadata:
+      labels:
+        app: demo-portal
+    spec:
+      containers:
+        - name: demo-portal
+          image: docker.io/dsuprunov/demo-portal:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DEMO_PORTAL_AAA
+              value: "default-aaa"
+            - name: DEMO_PORTAL_BBB
+              value: "default-bbb"
+            - name: DEMO_PORTAL_CCC
+              value: "default-ccc"
+            - name: DEMO_PORTAL_DDD
+              value: "default-ddd"
+            - name: DEMO_PORTAL_SECRET_BASE
+              value: ""
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+      restartPolicy: Always
