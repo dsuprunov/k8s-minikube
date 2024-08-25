@@ -1,3 +1,16 @@
 resources:
   - deployment.yaml
   - service.yaml
+
+configMapGenerator:
+  - name: demo-portal-base-configmap
+    literals:
+      - DEMO_PORTAL_BASE_ENV_VAR1=base_value1
+      - DEMO_PORTAL_BASE_ENV_VAR2=base_value2
+      - DEMO_PORTAL_BASE_ENV_VAR3=base_value3
+
+secretGenerator:
+  - name: demo-portal-base-secret
+    literals:
+      - DEMO_PORTAL_BASE_SECRET_VAR1=base_secret_value1
+      - DEMO_PORTAL_BASE_SECRET_VAR2=base_secret_value2

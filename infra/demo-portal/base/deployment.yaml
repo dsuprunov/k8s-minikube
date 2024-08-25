@@ -20,17 +20,11 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
-          env:
-            - name: DEMO_PORTAL_AAA
-              value: "default-aaa"
-            - name: DEMO_PORTAL_BBB
-              value: "default-bbb"
-            - name: DEMO_PORTAL_CCC
-              value: "default-ccc"
-            - name: DEMO_PORTAL_DDD
-              value: "default-ddd"
-            - name: DEMO_PORTAL_SECRET_BASE
-              value: ""
+          envFrom:
+            - configMapRef:
+                name: demo-portal-base-configmap
+            - secretRef:
+                name: demo-portal-base-secret
           resources:
             requests:
               memory: "64Mi"

@@ -1,9 +1,21 @@
 resources:
   - ../../base
-  - secret.yaml
 
 patches:
   - path: deployment-patch.yaml
     target:
       kind: Deployment
       name: demo-portal-deployment
+
+configMapGenerator:
+  - name: demo-portal-dev-configmap
+    literals:
+      - DEMO_PORTAL_DEV_ENV_VAR1=dev_value1
+      - DEMO_PORTAL_DEV_ENV_VAR2=dev_value2
+      - DEMO_PORTAL_BASE_ENV_VAR3=!!!---OVERWRITTEN-IN-DEV---!!!
+
+secretGenerator:
+  - name: demo-portal-dev-secret
+    literals:
+      - DEMO_PORTAL_DEV_SECRET_VAR1=dev_secret_value1
+      - DEMO_PORTAL_DEV_SECRET_VAR2=dev_secret_value2
