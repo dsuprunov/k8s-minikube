@@ -9,7 +9,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         self.send_header('Content-type', 'text/plain')
         self.end_headers()
 
-        _env = '\n'.join([f'{k}={v}' for k, v in os.environ.items() if k.startswith('DEMO_PORTAL_')])
+        _env = '\n'.join([f'{k}={v}' for k, v in sorted(os.environ.items()) if k.startswith('DEMO_PORTAL_')])
 
         self.wfile.write(f'Hello world!\n'
                          f'Today is {pendulum.now(tz='UTC').format('YYYY-MM-DD HH:mm:ss z')}.\n\n'
