@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if ! command -v jq &> /dev/null
+then
+    echo "Error: jq is not installed. Please install jq and try again."
+    exit 1
+fi
+
 if [ "$#" -ne 2 ]; then
     echo "Usage: $0 <deployment-name> <namespace>"
     exit 1
