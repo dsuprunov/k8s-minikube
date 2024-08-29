@@ -17,3 +17,6 @@ spec:
                 name: demo-portal-dev-configmap
             - secretRef:
                 name: demo-portal-dev-secret
+          env:
+            - name: DEMO_PORTAL_DEV_ENV_VAR1
+              value: dev_env_value1
