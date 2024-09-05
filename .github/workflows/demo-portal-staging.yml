@@ -16,10 +16,10 @@ jobs:
       - name: Load variable names from file and create ConfigMap
         run: |
           VARS=$(yq '.variables[]' .github/demo-portal-variables.yaml)
-          for VAR in $VARS; do
-            VALUE=$(eval echo "\$$VAR")
-            echo "$VAR $VALUE"
-          done
+          echo "1 - $VARS"
+          echo "2 - ${{ vars.DEMO_VAR0 }}"
+          echo "3 - ${{ vars['DEMO_VAR0'] }}"
+          
 
       - name: Print env
         run: |
