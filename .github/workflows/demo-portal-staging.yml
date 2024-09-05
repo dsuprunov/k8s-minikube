@@ -9,8 +9,6 @@ on:
 jobs:
   deploy-staging:
     runs-on: ubuntu-latest
-    env:
-      XGITHUB_ENV_VAR: ${{ vars.XGITHUB_ENV_VAR }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
