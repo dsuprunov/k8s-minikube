@@ -14,10 +14,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Load variable names from file and create ConfigMap
-        id: load-vars
         run: |
           VARS=$(yq '.variables[]' .github/demo-portal-variables.yaml)
-          echo $VARS
+          for VAR in $VARS; do
+            echo "$VAR $VALUE"
+          done
 
       - name: Print env
         run: |
