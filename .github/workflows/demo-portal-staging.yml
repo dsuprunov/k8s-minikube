@@ -18,7 +18,8 @@ jobs:
       - name: Load environment variables from env-vars.yml
         run: |
           echo "Loading environment variables for staging"
-          eval $(cat infra/demo-portal/overlays/dev/env-vars.yml | sed 's/: /=/g')
+          echo ${{ secrets.XGITHUB_ENV_SECRET }}
+          #eval $(cat infra/demo-portal/overlays/dev/env-vars.yml | sed 's/: /=/g')
 
       - name: Load secrets from env-secrets.yml
         run: |
