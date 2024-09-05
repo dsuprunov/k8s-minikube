@@ -20,7 +20,7 @@ jobs:
           echo "2 - ${{ vars.DEMO_VAR0 }}"
           echo "3 - ${{ vars['DEMO_VAR0'] }}"
           for VAR in $VARS; do
-            echo "4 - $VAR - ${{ vars[format('{0}', VAR)] }}"
+            echo "4 - $VAR - ${{ vars[format('{0}', $VAR)] }}"
           done
           
 
