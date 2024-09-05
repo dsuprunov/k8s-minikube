@@ -13,10 +13,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Load variables from file
+      - name: Load variable names from file and create ConfigMap
         id: load-vars
         run: |
-            echo "variables=$(cat .github/demo-portal-variables.yaml | yq '.variables')" >> $GITHUB_ENV
+          VARS=$(yq '.variables[]' .github/variables.yaml)
+          echo $VARS
 
       - name: Print env
         run: |
