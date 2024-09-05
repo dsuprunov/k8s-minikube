@@ -1,0 +1,4 @@
+variables:
+  DEMO_VAR0: value0
+  DEMO_VAR1: value1
+  DEMO_VAR2: value2

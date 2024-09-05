@@ -13,10 +13,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Load environment variables from env-vars.yml
+      - name: Load variables from file
+        id: load-vars
         run: |
-          sed 's/: /=/g' infra/demo-portal/overlays/dev/env-vars.yml >> $GITHUB_ENV
+            echo "variables=$(cat .github/demo-portal-variables.yaml | yq '.variables')" >> $GITHUB_ENV
 
       - name: Print env
         run: |
-          printenv | grep XGITHUB | sort
+          printenv | grep DEMO | sort
