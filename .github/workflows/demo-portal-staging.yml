@@ -16,7 +16,7 @@ jobs:
       - name: Load environment variables from env-vars.yml
         run: |
           echo "Loading environment variables for staging"
-          export $(infra/demo-portal/overlays/dev/env-vars.yml | sed 's/: +/=/g')
+          export $(cat infra/demo-portal/overlays/dev/env-vars.yml | sed 's/: +/=/g')
 
       - name: Print env
         run: |
