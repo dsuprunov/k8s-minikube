@@ -15,6 +15,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Load environment variables from env-vars.yml
+        run: |
+          echo "Loading environment variables for staging"
+          eval $(cat infra/demo-portal/overlays/dev/env-vars.yml | sed 's/: /=/g')
+
       - name: Print env
         run: |
-          env | sort
+          env | grep XGITHUB | sort
