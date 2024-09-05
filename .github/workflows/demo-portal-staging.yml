@@ -14,7 +14,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Load environment variables from env-vars.yml
-        run: sed 's/: /=/g' infra/demo-portal/overlays/dev/env-vars.yml >> $GITHUB_ENV
+        run: |
+          sed 's/: /=/g' infra/demo-portal/overlays/dev/env-vars.yml >> $GITHUB_ENV
 
       - name: Print env
         run: |
