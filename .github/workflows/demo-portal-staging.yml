@@ -9,22 +9,21 @@ on:
 jobs:
   deploy-staging:
     runs-on: ubuntu-latest
-    environment:
-      name: staging
+    env:
+      XGITHUB_ENV_SECRET: ${{ secrets.XGITHUB_ENV_SECRET }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Load environment variables from env-vars.yml
-        run: |
-          echo "Loading environment variables for staging"
-          echo "${{ secrets.XGITHUB_ENV_SECRET }}"
-          #eval $(cat infra/demo-portal/overlays/dev/env-vars.yml | sed 's/: /=/g')
-
-      - name: Load secrets from env-secrets.yml
-        run: |
-          echo "Loading secrets for staging"
-          eval $(cat infra/demo-portal/overlays/dev/env-secrets.yml | sed 's/: /=/g')
+#      - name: Load environment variables from env-vars.yml
+#        run: |
+#          echo "Loading environment variables for staging"
+#          #eval $(cat infra/demo-portal/overlays/dev/env-vars.yml | sed 's/: /=/g')
+#
+#      - name: Load secrets from env-secrets.yml
+#        run: |
+#          echo "Loading secrets for staging"
+#          eval $(cat infra/demo-portal/overlays/dev/env-secrets.yml | sed 's/: /=/g')
 
       - name: Print env
         run: |
