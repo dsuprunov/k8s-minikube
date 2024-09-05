@@ -1,0 +1,31 @@
+name: Deploy Staging
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy-staging:
+    runs-on: ubuntu-latest
+    environment:
+      name: staging
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Load environment variables from env-vars.yml
+        run: |
+          echo "Loading environment variables for staging"
+          eval $(cat infra/demo-portal/overlays/staging/env-vars.yml | sed 's/: /=/g')
+
+      - name: Load secrets from env-secrets.yml
+        run: |
+          echo "Loading secrets for staging"
+          eval $(cat infra/demo-portal/overlays/staging/env-secrets.yml | sed 's/: /=/g')
+
+      - name: Print env
+        run: |
+          env
+          env | grep XGITHUB

@@ -8,15 +8,26 @@ spec:
     spec:
       containers:
         - name: demo-portal
-          envFrom:
-            - configMapRef:
-                name: demo-portal-base-configmap
-            - secretRef:
-                name: demo-portal-base-secret
-            - configMapRef:
-                name: demo-portal-dev-configmap
-            - secretRef:
-                name: demo-portal-dev-secret
+#          envFrom:
+#            - configMapRef:
+#                name: demo-portal-base-configmap
+#            - secretRef:
+#                name: demo-portal-base-secret
+#            - configMapRef:
+#                name: demo-portal-dev-configmap
+#            - secretRef:
+#                name: demo-portal-dev-secret
           env:
             - name: DEMO_PORTAL_DEV_ENV_VAR1
               value: dev_env_value1
+            - name: DEMO_PORTAL_DEV_CONFIGMAP_VAR1
+              valueFrom:
+                configMapKeyRef:
+                  name: demo-portal-dev-configmap
+                  key: DEMO_PORTAL_DEV_CONFIGMAP_VAR1
+            - name: DEMO_PORTAL_DEV_SECRET_VAR1
+              valueFrom:
+                secretKeyRef:
+                  name: demo-portal-dev-secret
+                  key: DEMO_PORTAL_DEV_SECRET_VAR1
+
