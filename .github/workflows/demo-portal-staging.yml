@@ -16,11 +16,6 @@ jobs:
       - name: Load environment variables from env-vars.yml
         run: |
           echo "Loading environment variables for staging"
-#          export $(cat infra/demo-portal/overlays/dev/env-vars.yml | sed 's/: +/=/g')
-#          set -o allexport
-          source infra/demo-portal/overlays/dev/env-vars.yml
-          env | grep XGITHUB | sort
-#          set +o allexport
 
       - name: Print env
         run: |
