@@ -18,14 +18,13 @@ jobs:
       - name: Load environment variables from env-vars.yml
         run: |
           echo "Loading environment variables for staging"
-          eval $(cat infra/demo-portal/overlays/staging/env-vars.yml | sed 's/: /=/g')
+          eval $(cat infra/demo-portal/overlays/dev/env-vars.yml | sed 's/: /=/g')
 
       - name: Load secrets from env-secrets.yml
         run: |
           echo "Loading secrets for staging"
-          eval $(cat infra/demo-portal/overlays/staging/env-secrets.yml | sed 's/: /=/g')
+          eval $(cat infra/demo-portal/overlays/dev/env-secrets.yml | sed 's/: /=/g')
 
       - name: Print env
         run: |
-          env
-          env | grep XGITHUB
+          env | sort
