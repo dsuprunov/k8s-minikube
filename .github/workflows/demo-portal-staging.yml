@@ -16,6 +16,8 @@ jobs:
       - name: Load environment variables from env-vars.yml
         run: |
           echo "Loading environment variables for staging"
+          source infra/demo-portal/overlays/dev/env-vars.yml
+          env | grep XGITHUB | sort
 
       - name: Print env
         run: |
