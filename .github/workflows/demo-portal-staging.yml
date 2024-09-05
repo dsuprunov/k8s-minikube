@@ -14,14 +14,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Load environment variables from env-vars.yml
-        run: |
-          echo "Loading environment variables for staging"
-          set -o allexport
-          source infra/demo-portal/overlays/dev/env-vars.yml
-          set +o allexport
-          echo "123-321"
-          env | grep XGITHUB | sort
+        run: sed 's/: /=/g' infra/demo-portal/overlays/dev/env-vars.yml >> $GITHUB_ENV
 
       - name: Print env
         run: |
-          env | grep XGITHUB | sort
+          printenv | grep XGITHUB | sort
