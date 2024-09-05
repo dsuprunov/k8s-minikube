@@ -16,7 +16,7 @@ jobs:
       - name: Load variable names from file and create ConfigMap
         id: load-vars
         run: |
-          VARS=$(yq '.variables[]' .github/variables.yaml)
+          VARS=$(yq '.variables[]' .github/demo-portal-variables.yaml)
           echo $VARS
 
       - name: Print env
