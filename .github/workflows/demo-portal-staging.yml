@@ -17,7 +17,7 @@ jobs:
         run: |
           VARS=$(yq '.variables[]' .github/demo-portal-variables.yaml)
           for VAR in $VARS; do
-            VALUE="${{ vars[VAR] }}"
+            VALUE=$(eval echo "\$$VAR")
             echo "$VAR $VALUE"
           done
 
