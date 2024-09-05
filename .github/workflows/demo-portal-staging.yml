@@ -19,6 +19,9 @@ jobs:
           echo "1 - $VARS"
           echo "2 - ${{ vars.DEMO_VAR0 }}"
           echo "3 - ${{ vars['DEMO_VAR0'] }}"
+          for VAR in $VARS; do
+            echo "4 - $VAR - ${{ vars[$VAR] }}"
+          done
           
 
       - name: Print env
