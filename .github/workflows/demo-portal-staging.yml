@@ -20,3 +20,7 @@ jobs:
       - name: Print env
         run: |
           printenv | grep DEMO | sort
+          echo "---"
+          echo "0 - ${{ vars.DEMO_VAR0 }}"
+          echo "1 - ${{ vars.DEMO_VAR1 }}"
+          echo "2 - ${{ vars.DEMO_VAR2 }}"
