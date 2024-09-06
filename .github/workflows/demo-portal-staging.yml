@@ -34,6 +34,6 @@ jobs:
         run: |
           kubectl get configmap demo-portal-configmap -o yaml
 
-      - name: Get Secret values (base64 encoded)
+      - name: Get Secret values
         run: |
           kubectl get secret demo-portal-secret -o yaml
