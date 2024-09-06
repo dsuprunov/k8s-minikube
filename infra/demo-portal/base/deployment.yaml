@@ -26,6 +26,11 @@ spec:
                 configMapKeyRef:
                   name: demo-portal-configmap
                   key: DEMO_VAR0
+            - name: DEMO_VAR01
+              valueFrom:
+                configMapKeyRef:
+                  name: demo-portal-configmap
+                  key: DEMO_VAR01
             - name: DEMO_SECRET0
               valueFrom:
                 secretKeyRef:
