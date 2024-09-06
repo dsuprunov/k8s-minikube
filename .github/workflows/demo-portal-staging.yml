@@ -10,6 +10,9 @@ jobs:
   deploy-staging:
 #    runs-on: ubuntu-latest
     runs-on: self-hosted
+    defaults:
+      run:
+        working-directory: ./infra/demo-portal/overlays/dev
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -30,13 +33,13 @@ jobs:
             --from-literal=DEMO_SECRET2=${{ secrets.DEMO_SECRET2 }} \
             -o yaml --dry-run=client | kubectl apply -f -
 
-      - name: Get ConfigMap values
-        run: |
-          kubectl get configmap demo-portal-configmap -o yaml
-
-      - name: Get Secret values
-        run: |
-          kubectl get secret demo-portal-secret -o yaml
+#      - name: Get ConfigMap values
+#        run: |
+#          kubectl get configmap demo-portal-configmap -o yaml
+#
+#      - name: Get Secret values
+#        run: |
+#          kubectl get secret demo-portal-secret -o yaml
 
       - name: Rollout and restart dependent pods
         run: |
