@@ -8,7 +8,8 @@ on:
 
 jobs:
   deploy-staging:
-    runs-on: ubuntu-latest
+#    runs-on: ubuntu-latest
+    runs-on: self-hosted
     env:
       DEMO_VAR0: ${{ vars.DEMO_VAR0 }}
       DEMO_VAR1: ${{ vars.DEMO_VAR1 }}
@@ -24,3 +25,6 @@ jobs:
           echo "0 - ${{ vars.DEMO_VAR0 }}"
           echo "1 - ${{ vars.DEMO_VAR1 }}"
           echo "2 - ${{ vars.DEMO_VAR2 }}"
+
+      - name: Run kubectl status
+        run: kubectl get pods -A
