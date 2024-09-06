@@ -9,20 +9,13 @@ on:
 jobs:
   deploy-staging:
     runs-on: ubuntu-latest
+    env:
+      DEMO_VAR0: ${{ vars.DEMO_VAR0 }}
+      DEMO_VAR1: ${{ vars.DEMO_VAR1 }}
+      DEMO_VAR2: ${{ vars.DEMO_VAR2 }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Load variable names from file and create ConfigMap
-        run: |
-          VARS=$(yq '.variables[]' .github/demo-portal-variables.yaml)
-          echo "1 - $VARS"
-          echo "2 - ${{ vars.DEMO_VAR0 }}"
-          echo "3 - ${{ vars['DEMO_VAR0'] }}"
-          for VAR in $VARS; do
-            echo "4 - $VAR - ${{ vars[format('{0}', $VAR)] }}"
-          done
-          
 
       - name: Print env
         run: |
