@@ -17,10 +17,10 @@ jobs:
       - name: Update ConfigMap
         run: |
           kubectl create configmap demo-portal-configmap \
-          --from-literal=DEMO_VAR0=${{ vars.DEMO_VAR0 }} \
-          --from-literal=DEMO_VAR1=${{ vars.DEMO_VAR1 }} \
-          --from-literal=DEMO_VAR2=${{ vars.DEMO_VAR2 }} \
-          -o yaml --dry-run=client | kubectl apply -f -
+            --from-literal=DEMO_VAR0=${{ vars.DEMO_VAR0 }} \
+            --from-literal=DEMO_VAR1=${{ vars.DEMO_VAR1 }} \
+            --from-literal=DEMO_VAR2=${{ vars.DEMO_VAR2 }} \
+            -o yaml --dry-run=client | kubectl apply -f -
 
       - name: Get ConfigMap values
         run: |
