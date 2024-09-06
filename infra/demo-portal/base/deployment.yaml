@@ -20,14 +20,17 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
-          envFrom:
-            - configMapRef:
-                name: demo-portal-base-configmap
-            - secretRef:
-                name: demo-portal-base-secret
           env:
-            - name: DEMO_PORTAL_BASE_ENV_VAR1
-              value: base_env_value1
+            - name: DEMO_VAR0
+              valueFrom:
+                configMapKeyRef:
+                  name: demo-portal-configmap
+                  key: DEMO_VAR0
+            - name: DEMO_SECRET0
+              valueFrom:
+                secretKeyRef:
+                  name: demo-portal-secret
+                  key: DEMO_SECRET0
           resources:
             requests:
               memory: "64Mi"

@@ -37,3 +37,11 @@ jobs:
       - name: Get Secret values
         run: |
           kubectl get secret demo-portal-secret -o yaml
+
+      - name: Rollout and restart dependent pods
+        run: |
+          kubectl rollout restart deployment demo-portal-deployment
+
+      - name: Check Deployment Rollout Status
+        run: |
+          kubectl rollout status deployment demo-portal-deployment

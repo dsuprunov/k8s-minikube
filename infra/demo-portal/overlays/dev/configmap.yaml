@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: demo-portal-dev-configmap
-data:
-  DEMO_PORTAL_DEV_CONFIGMAP_VAR1: dev_configmap_value1
-  DEMO_PORTAL_DEV_CONFIGMAP_VAR2: dev_configmap_value2
-  DEMO_PORTAL_BASE_CONFIGMAP_VAR3: ---OVERWRITTEN-IN-DEV-OVERLAY---
