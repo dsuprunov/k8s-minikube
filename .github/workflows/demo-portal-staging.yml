@@ -33,14 +33,6 @@ jobs:
             --from-literal=DEMO_SECRET2=${{ secrets.DEMO_SECRET2 }} \
             -o yaml --dry-run=client | kubectl apply -f -
 
-#      - name: Get ConfigMap values
-#        run: |
-#          kubectl get configmap demo-portal-configmap -o yaml
-#
-#      - name: Get Secret values
-#        run: |
-#          kubectl get secret demo-portal-secret -o yaml
-
       - name: Apply Kustomize Configuration
         run: kubectl kustomize | kubectl apply -f -
 
