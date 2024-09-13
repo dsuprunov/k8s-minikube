@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: distroless-webapp-go-deployment
+  labels:
+    app: distroless-webapp-go
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: distroless-webapp-go
+  template:
+    metadata:
+      labels:
+        app: distroless-webapp-go
+    spec:
+      containers:
+        - name: distroless-webapp-go
+          image: docker.io/dsuprunov/distroless-webapp-go:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 4000
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+      restartPolicy: Always
+
+

@@ -39,3 +39,5 @@ spec:
               memory: "128Mi"
               cpu: "500m"
       restartPolicy: Always
+
+# TODO: docker secret / docker swarn style посмотреть передачу через /var/run/secrets/.env
