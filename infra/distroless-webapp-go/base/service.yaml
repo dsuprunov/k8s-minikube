@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name:distroless-webapp-go-service
+  name: distroless-webapp-go-service
 spec:
   selector:
     app: distroless-webapp-go
