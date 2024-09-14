@@ -6,9 +6,13 @@ import (
     "time"
 )
 
+var baseImage string
+var buildTime string
+
 func handler(w http.ResponseWriter, r *http.Request) {
     currentTime := time.Now().UTC()
-    fmt.Fprintf(w, "Current time: %s", currentTime.Format(time.RFC1123))
+    fmt.Fprintf(w, "Current time: %s\nBuilt with base image: %s\nBuild time: %s",
+        currentTime.Format(time.RFC1123), baseImage, buildTime)
 }
 
 func main() {
