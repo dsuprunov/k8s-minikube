@@ -13,6 +13,10 @@ jobs:
     defaults:
       run:
         working-directory: ./infra/demo-portal/base
+    env:
+      DEMO_PORTAL_VAR_0: ${{ vars.DEMO_VAR0 }}
+      DEMO_PORTAL_VAR_1: ${{ vars.DEMO_VAR0 }}
+      DEMO_PORTAL_VAR_2: ${{ vars.DEMO_VAR0 }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -22,26 +26,9 @@ jobs:
           echo "DEMO_PORTAL_CONFIGMAPGENERATOR_0=\"${{ vars.DEMO_VAR0 }}\"" >> .configmap.env
           echo "DEMO_PORTAL_CONFIGMAPGENERATOR_1=\"${{ vars.DEMO_VAR1 }}\"" >> .configmap.env
           echo "DEMO_PORTAL_CONFIGMAPGENERATOR_2=\"${{ vars.DEMO_VAR2 }}\"" >> .configmap.env
-          
           echo "DEMO_PORTAL_SECRETGENERATOR_0=\"${{ secrets.DEMO_SECRET0 }}\"" >> .secret.env
           echo "DEMO_PORTAL_SECRETGENERATOR_0=\"${{ secrets.DEMO_SECRET1 }}\"" >> .secret.env
           echo "DEMO_PORTAL_SECRETGENERATOR_0=\"${{ secrets.DEMO_SECRET2 }}\"" >> .secret.env
-
-#      - name: Create or Update ConfigMap
-#        run: |
-#          kubectl create configmap demo-portal-configmap \
-#            --from-literal=DEMO_VAR0=${{ vars.DEMO_VAR0 }} \
-#            --from-literal=DEMO_VAR1=${{ vars.DEMO_VAR1 }} \
-#            --from-literal=DEMO_VAR2=${{ vars.DEMO_VAR2 }} \
-#            -o yaml --dry-run=client | kubectl apply -f -
-
-#      - name: Create or Update Secret
-#        run: |
-#          kubectl create secret generic demo-portal-secret \
-#            --from-literal=DEMO_SECRET0=${{ secrets.DEMO_SECRET0 }} \
-#            --from-literal=DEMO_SECRET1=${{ secrets.DEMO_SECRET1 }} \
-#            --from-literal=DEMO_SECRET2=${{ secrets.DEMO_SECRET2 }} \
-#            -o yaml --dry-run=client | kubectl apply -f -
 
       - name: Apply Kustomize Configuration
         run: kubectl kustomize | kubectl apply -f -

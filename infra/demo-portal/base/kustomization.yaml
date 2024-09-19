@@ -6,21 +6,11 @@ configMapGenerator:
   - name: demo-portal-configmap
     files:
       - .configmap.env
-#  - name: demo-portal-configmap
-#    literals:
-#      - DEMO_PORTAL_CONFIGMAPGENERATOR_0=DEMO_PORTAL_CONFIGMAPGENERATOR_VALUE_0
-#      - DEMO_PORTAL_CONFIGMAPGENERATOR_1=DEMO_PORTAL_CONFIGMAPGENERATOR_VALUE_1
-#      - DEMO_PORTAL_CONFIGMAPGENERATOR_2=DEMO_PORTAL_CONFIGMAPGENERATOR_VALUE_2
 
 secretGenerator:
   - name: demo-portal-secret
     files:
       - .secret.env
-#  - name: demo-portal-secret
-#    literals:
-#      - DEMO_PORTAL_SECRETGENERATOR_0=DEMO_PORTAL_SECRETGENERATOR_VALUE_0
-#      - DEMO_PORTAL_SECRETGENERATOR_1=DEMO_PORTAL_SECRETGENERATOR_VALUE_1
-#      - DEMO_PORTAL_SECRETGENERATOR_2=DEMO_PORTAL_SECRETGENERATOR_VALUE_2
 
 #generatorOptions:
 #  disableNameSuffixHash: true

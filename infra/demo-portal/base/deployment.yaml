@@ -30,9 +30,9 @@ spec:
 #            - { name: DEMO_PORTAL_SECRETGENERATOR_2, valueFrom: { secretKeyRef: { name: demo-portal-secret, key: DEMO_PORTAL_SECRETGENERATOR_2 } } }
           envFrom:
             - configMapRef:
-                name: demo-portal-configmap
+              name: demo-portal-configmap
             - secretRef:
-                name: demo-portal-secret
+              name: demo-portal-secret
           ports:
             - containerPort: 8080
           resources:
