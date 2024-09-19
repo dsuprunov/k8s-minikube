@@ -18,6 +18,13 @@ spec:
         - name: demo-portal
           image: docker.io/dsuprunov/demo-portal:latest
           imagePullPolicy: Always
+          env:
+            - { name: DEMO_VAR_GEN0, valueFrom: { configMapKeyRef: { name: demo-portal-configmap, key: DEMO_VAR_GEN0 } } }
+            - { name: DEMO_VAR_GEN1, valueFrom: { configMapKeyRef: { name: demo-portal-configmap, key: DEMO_VAR_GEN1 } } }
+            - { name: DEMO_VAR_GEN2, valueFrom: { configMapKeyRef: { name: demo-portal-configmap, key: DEMO_VAR_GEN2 } } }
+            - { name: DEMO_SECRET_GEN0, valueFrom: { secretKeyRef: { name: demo-portal-secret, key: DEMO_SECRET_GEN0 } } }
+            - { name: DEMO_SECRET_GEN1, valueFrom: { secretKeyRef: { name: demo-portal-secret, key: DEMO_SECRET_GEN1 } } }
+            - { name: DEMO_SECRET_GEN2, valueFrom: { secretKeyRef: { name: demo-portal-secret, key: DEMO_SECRET_GEN2 } } }
           ports:
             - containerPort: 8080
           resources:
