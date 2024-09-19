@@ -43,6 +43,6 @@ spec:
               memory: "128Mi"
               cpu: "500m"
       volumes:
-        - { name: config-volume, configMap: { name: demo-portal-configmap-from-env, items: [ { key: .env, path: .configmap.env } ] } }
-        - { name: secret-volume, secret: { secretName: demo-portal-secret-from-env, items: [ { key: .env, path: .secret.env } ] } }
+        - { name: config-volume, configMap: { name: demo-portal-configmap, items: [ { key: .env, path: .configmap.env } ] } }
+        - { name: secret-volume, secret: { secretName: demo-portal-secret, items: [ { key: .env, path: .secret.env } ] } }
       restartPolicy: Always
