@@ -20,17 +20,6 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
-          env:
-            - name: DEMO_VAR0
-              valueFrom:
-                configMapKeyRef:
-                  name: demo-portal-configmap
-                  key: DEMO_VAR0
-            - name: DEMO_SECRET0
-              valueFrom:
-                secretKeyRef:
-                  name: demo-portal-secret
-                  key: DEMO_SECRET0
           resources:
             requests:
               memory: "64Mi"
@@ -39,5 +28,3 @@ spec:
               memory: "128Mi"
               cpu: "500m"
       restartPolicy: Always
-
-# TODO: docker secret / docker swarn style посмотреть передачу через /var/run/secrets/.env
