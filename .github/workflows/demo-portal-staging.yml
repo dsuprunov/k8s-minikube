@@ -19,12 +19,12 @@ jobs:
 
       - name: Create .env file
         run: |
-          echo "DEMO_VAR0=\"${{ vars.DEMO_VAR0 }}\"" >> .env
-          echo "DEMO_VAR1=\"${{ vars.DEMO_VAR1 }}\"" >> .env
-          echo "DEMO_VAR2=\"${{ vars.DEMO_VAR2 }}\"" >> .env
-          echo "DEMO_SECRET0=\"${{ secrets.DEMO_SECRET0 }}\"" >> .env
-          echo "DEMO_SECRET1=\"${{ secrets.DEMO_SECRET1 }}\"" >> .env
-          echo "DEMO_SECRET2=\"${{ secrets.DEMO_SECRET2 }}\"" >> .env
+          echo "DEMO_PORTAL_CONFIGMAPGENERATOR_0=\"${{ vars.DEMO_VAR0 }}\"" >> .configmap.env
+          echo "DEMO_PORTAL_CONFIGMAPGENERATOR_1=\"${{ vars.DEMO_VAR1 }}\"" >> .configmap.env
+          echo "DEMO_PORTAL_CONFIGMAPGENERATOR_2=\"${{ vars.DEMO_VAR2 }}\"" >> .configmap.env
+          echo "DEMO_PORTAL_SECRETGENERATOR_0=\"${{ secrets.DEMO_SECRET0 }}\"" >> .secret.env
+          echo "DEMO_PORTAL_SECRETGENERATOR_0=\"${{ secrets.DEMO_SECRET1 }}\"" >> .secret.env
+          echo "DEMO_PORTAL_SECRETGENERATOR_0=\"${{ secrets.DEMO_SECRET2 }}\"" >> .secretenv
 
       - name: Show .env file
         run: |
@@ -61,4 +61,4 @@ jobs:
           kubectl rollout status deployment demo-portal-deployment
 
       - name: Clean up .env file
-        run: rm .env
+        run: rm .configmap.env .secret.env
