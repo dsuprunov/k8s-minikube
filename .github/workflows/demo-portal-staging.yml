@@ -17,21 +17,34 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Create or Update ConfigMap
+      - name: Create .env file
         run: |
-          kubectl create configmap demo-portal-configmap \
-            --from-literal=DEMO_VAR0=${{ vars.DEMO_VAR0 }} \
-            --from-literal=DEMO_VAR1=${{ vars.DEMO_VAR1 }} \
-            --from-literal=DEMO_VAR2=${{ vars.DEMO_VAR2 }} \
-            -o yaml --dry-run=client | kubectl apply -f -
+          echo "DEMO_VAR0=\"${{ vars.DEMO_VAR0 }}\"" >> .env
+          echo "DEMO_VAR1=\"${{ vars.DEMO_VAR1 }}\"" >> .env
+          echo "DEMO_VAR2=\"${{ vars.DEMO_VAR2 }}\"" >> .env
+          echo "DEMO_SECRET0=\"${{ secrets.DEMO_SECRET0 }}\"" >> .env
+          echo "DEMO_SECRET1=\"${{ secrets.DEMO_SECRET1 }}\"" >> .env
+          echo "DEMO_SECRET2=\"${{ secrets.DEMO_SECRET2 }}\"" >> .env
 
-      - name: Create or Update Secret
+      - name: Show .env file
         run: |
-          kubectl create secret generic demo-portal-secret \
-            --from-literal=DEMO_SECRET0=${{ secrets.DEMO_SECRET0 }} \
-            --from-literal=DEMO_SECRET1=${{ secrets.DEMO_SECRET1 }} \
-            --from-literal=DEMO_SECRET2=${{ secrets.DEMO_SECRET2 }} \
-            -o yaml --dry-run=client | kubectl apply -f -
+          cat .env
+
+#      - name: Create or Update ConfigMap
+#        run: |
+#          kubectl create configmap demo-portal-configmap \
+#            --from-literal=DEMO_VAR0=${{ vars.DEMO_VAR0 }} \
+#            --from-literal=DEMO_VAR1=${{ vars.DEMO_VAR1 }} \
+#            --from-literal=DEMO_VAR2=${{ vars.DEMO_VAR2 }} \
+#            -o yaml --dry-run=client | kubectl apply -f -
+
+#      - name: Create or Update Secret
+#        run: |
+#          kubectl create secret generic demo-portal-secret \
+#            --from-literal=DEMO_SECRET0=${{ secrets.DEMO_SECRET0 }} \
+#            --from-literal=DEMO_SECRET1=${{ secrets.DEMO_SECRET1 }} \
+#            --from-literal=DEMO_SECRET2=${{ secrets.DEMO_SECRET2 }} \
+#            -o yaml --dry-run=client | kubectl apply -f -
 
       - name: Apply Kustomize Configuration
         run: kubectl kustomize | kubectl apply -f -
