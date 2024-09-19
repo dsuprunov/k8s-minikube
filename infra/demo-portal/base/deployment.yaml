@@ -18,6 +18,9 @@ spec:
         - name: demo-portal
           image: docker.io/dsuprunov/demo-portal:latest
           imagePullPolicy: Always
+          volumeMounts:
+            - { name: config-volume, mountPath: /app/.configmap.env, subPath: .configmap.env }
+            - { name: secret-volume, mountPath: /app/.secret.env, subPath: .secret.env }
           env:
             - { name: DEMO_PORTAL_CONFIGMAPGENERATOR_0, valueFrom: { configMapKeyRef: { name: demo-portal-configmap, key: DEMO_PORTAL_CONFIGMAPGENERATOR_0 } } }
             - { name: DEMO_PORTAL_CONFIGMAPGENERATOR_1, valueFrom: { configMapKeyRef: { name: demo-portal-configmap, key: DEMO_PORTAL_CONFIGMAPGENERATOR_1 } } }
@@ -34,4 +37,7 @@ spec:
             limits:
               memory: "128Mi"
               cpu: "500m"
+      volumes:
+        - { name: config-volume, configMap: { name: demo-portal-configmap-from-env, items: [ { key: .env, path: .configmap.env } ] } }
+        - { name: secret-volume, secret: { secretName: demo-portal-secret-from-env, items: [ { key: .env, path: .secret.env } ] } }
       restartPolicy: Always
