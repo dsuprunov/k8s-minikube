@@ -56,3 +56,6 @@ jobs:
       - name: Check Deployment Rollout Status
         run: |
           kubectl rollout status deployment demo-portal-deployment
+
+      - name: Clean up .env file
+        run: rm .env

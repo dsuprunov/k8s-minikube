@@ -3,6 +3,9 @@ resources:
   - service.yaml
 
 configMapGenerator:
+  - name: demo-portal-configmap-from-env
+    files:
+      - .env
   - name: demo-portal-configmap
     literals:
       - DEMO_PORTAL_CONFIGMAPGENERATOR_0=DEMO_PORTAL_CONFIGMAPGENERATOR_VALUE_0
@@ -10,6 +13,9 @@ configMapGenerator:
       - DEMO_PORTAL_CONFIGMAPGENERATOR_2=DEMO_PORTAL_CONFIGMAPGENERATOR_VALUE_2
 
 secretGenerator:
+  - name: demo-portal-secret-from-env
+    files:
+      - .env
   - name: demo-portal-secret
     literals:
       - DEMO_PORTAL_SECRETGENERATOR_0=DEMO_PORTAL_SECRETGENERATOR_VALUE_0
