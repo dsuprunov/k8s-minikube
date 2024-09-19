@@ -46,6 +46,9 @@ jobs:
 #            --from-literal=DEMO_SECRET2=${{ secrets.DEMO_SECRET2 }} \
 #            -o yaml --dry-run=client | kubectl apply -f -
 
+      - name: Show Final  Configuration
+        run: kubectl kustomize | cat
+
       - name: Apply Kustomize Configuration
         run: kubectl kustomize | kubectl apply -f -
 
