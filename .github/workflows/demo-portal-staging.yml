@@ -17,11 +17,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Create .env file
+      - name: Create .env file(s)
         run: |
           echo "DEMO_PORTAL_CONFIGMAPGENERATOR_0=\"${{ vars.DEMO_VAR0 }}\"" >> .configmap.env
           echo "DEMO_PORTAL_CONFIGMAPGENERATOR_1=\"${{ vars.DEMO_VAR1 }}\"" >> .configmap.env
           echo "DEMO_PORTAL_CONFIGMAPGENERATOR_2=\"${{ vars.DEMO_VAR2 }}\"" >> .configmap.env
+          
           echo "DEMO_PORTAL_SECRETGENERATOR_0=\"${{ secrets.DEMO_SECRET0 }}\"" >> .secret.env
           echo "DEMO_PORTAL_SECRETGENERATOR_0=\"${{ secrets.DEMO_SECRET1 }}\"" >> .secret.env
           echo "DEMO_PORTAL_SECRETGENERATOR_0=\"${{ secrets.DEMO_SECRET2 }}\"" >> .secret.env
