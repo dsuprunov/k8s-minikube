@@ -26,10 +26,6 @@ jobs:
           echo "DEMO_PORTAL_SECRETGENERATOR_0=\"${{ secrets.DEMO_SECRET1 }}\"" >> .secret.env
           echo "DEMO_PORTAL_SECRETGENERATOR_0=\"${{ secrets.DEMO_SECRET2 }}\"" >> .secretenv
 
-      - name: Show .env file
-        run: |
-          cat .env
-
 #      - name: Create or Update ConfigMap
 #        run: |
 #          kubectl create configmap demo-portal-configmap \
