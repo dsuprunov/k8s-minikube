@@ -11,6 +11,3 @@ secretGenerator:
   - name: demo-portal-secret
     files:
       - .secret.env
-
-#generatorOptions:
-#  disableNameSuffixHash: true
