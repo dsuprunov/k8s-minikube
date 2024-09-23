@@ -6,8 +6,6 @@ on:
     branches:
       - master
 
-asdad
-
 jobs:
   deploy-staging:
 #    runs-on: ubuntu-latest
