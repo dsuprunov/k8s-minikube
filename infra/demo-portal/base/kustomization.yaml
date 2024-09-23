@@ -4,10 +4,10 @@ resources:
 
 configMapGenerator:
   - name: demo-portal-configmap
-    files:
+    envs:
       - .configmap.env
 
 secretGenerator:
   - name: demo-portal-secret
-    files:
+    envs:
       - .secret.env

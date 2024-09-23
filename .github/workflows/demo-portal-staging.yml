@@ -13,10 +13,6 @@ jobs:
     defaults:
       run:
         working-directory: ./infra/demo-portal/base
-    env:
-      DEMO_PORTAL_VAR_0: ${{ vars.DEMO_VAR0 }}
-      DEMO_PORTAL_VAR_1: ${{ vars.DEMO_VAR0 }}
-      DEMO_PORTAL_VAR_2: ${{ vars.DEMO_VAR0 }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
