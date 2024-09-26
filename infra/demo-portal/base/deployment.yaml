@@ -21,7 +21,8 @@ spec:
 #          volumeMounts:
 #            - { name: config-volume, mountPath: /app/.configmap.env, subPath: .configmap.env }
 #            - { name: secret-volume, mountPath: /app/.secret.env, subPath: .secret.env }
-#          env:
+          env:
+            - { name: DEMO_PORTAL_ENV_0, value: DEMO_PORTAL_ENV_VALUE_0 }
 #            - { name: DEMO_PORTAL_CONFIGMAPGENERATOR_0, valueFrom: { configMapKeyRef: { name: demo-portal-configmap, key: DEMO_PORTAL_CONFIGMAPGENERATOR_0 } } }
 #            - { name: DEMO_PORTAL_CONFIGMAPGENERATOR_1, valueFrom: { configMapKeyRef: { name: demo-portal-configmap, key: DEMO_PORTAL_CONFIGMAPGENERATOR_1 } } }
 #            - { name: DEMO_PORTAL_CONFIGMAPGENERATOR_2, valueFrom: { configMapKeyRef: { name: demo-portal-configmap, key: DEMO_PORTAL_CONFIGMAPGENERATOR_2 } } }
